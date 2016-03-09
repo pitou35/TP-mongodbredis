@@ -16,11 +16,19 @@ public class App
     {
     	Morphia morphia = new Morphia();	
     	Mongo mongo = new Mongo();
-    	morphia.map(Person.class).map(Address.class);
+    	morphia.map(Person.class).map(Address.class).map(Article.class);
+    	//morphia.mapPackage("")
     	Datastore ds = morphia.createDatastore(mongo, "my_database");
+    	
+    	Article a=new Article();
+    	a.setName("lampe");
+    	
+    	//a.setBuyer(buyer);
     	
     	Person p = new Person();
     	p.setName("Tintin");
+    	
+    	a.setBuyer(p);
 
     	Address address = new Address();
     	address.setStreet("123 Some street");
